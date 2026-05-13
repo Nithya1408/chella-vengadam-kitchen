@@ -3,6 +3,7 @@ const cors = require('cors');
 require('dotenv').config();
 const db = require('./config/db');
 const menuRoutes = require('./routes/menuRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -11,6 +12,7 @@ app.use(cors());           // Allow frontend (port 5173) to talk to backend
 app.use(express.json());    // Parse incoming JSON from frontend
 // Routes
 app.use('/api/menu', menuRoutes);
+app.use('/api/orders', orderRoutes);
 // Health check route
 app.get('/', (req, res) => {
   res.json({

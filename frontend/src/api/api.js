@@ -24,5 +24,15 @@ export const fetchMenuByCategory = async (categoryId) => {
   const res = await API.get(`/menu/category/${categoryId}`);
   return res.data;
 };
+// ==================== ORDERS ====================
 
+export const createOrder = async (orderData) => {
+  const res = await API.post('/orders', orderData);
+  return res.data;
+};
+
+export const fetchOrderById = async (orderId) => {
+  const res = await API.get(`/orders/${orderId}`);
+  return res.data;
+};
 export default API;

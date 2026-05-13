@@ -114,7 +114,44 @@
   transform: scale(1.05);
   box-shadow: var(--shadow-md);
 }
+/* Quantity controls (when item is in cart) */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--lavender-500);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
 
+.qty-btn {
+  background: transparent;
+  color: var(--white);
+  border: none;
+  width: 32px;
+  height: 34px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--t-fast);
+}
+
+.qty-btn:hover {
+  background: var(--lavender-700);
+}
+
+.qty-display {
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.9rem;
+  min-width: 24px;
+  text-align: center;
+  user-select: none;
+}
 /* Responsive */
 @media (max-width: 600px) {
   .menu-item {

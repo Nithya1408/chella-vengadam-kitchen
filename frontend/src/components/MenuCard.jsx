@@ -1,6 +1,10 @@
+import { useCart } from '../context/CartContext';
 import './MenuCard.css';
 
 function MenuCard({ item }) {
+  const { addToCart, increaseQuantity, decreaseQuantity, getItemQuantity } = useCart();
+  const quantity = getItemQuantity(item.item_id);
+
   return (
     <div className="menu-item">
       <div className="menu-item-main">
@@ -19,7 +23,30 @@ function MenuCard({ item }) {
       
       <div className="menu-item-side">
         <p className="menu-item-price">₹{Number(item.price).toFixed(0)}</p>
-        <button className="add-btn">Add +</button>
+        
+        {quantity === 0 ? (
+          <button className="add-btn" onClick={() => addToCart(item)}>
+            Add +
+          </button>
+        ) : (
+          <div className="quantity-controls">
+            <button 
+              className="qty-btn qty-minus" 
+              onClick={() => decreaseQuantity(item.item_id)}
+              aria-label="Decrease quantity"
+            >
+              −
+            </button>
+            <span className="qty-display">{quantity}</span>
+            <button 
+              className="qty-btn qty-plus" 
+              onClick={() => increaseQuantity(item.item_id)}
+              aria-label="Increase quantity"
+            >
+              +
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
