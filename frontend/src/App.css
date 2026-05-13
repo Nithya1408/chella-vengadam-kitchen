@@ -1,0 +1,11 @@
+/* App-level layout — we'll keep this file minimal since most styling is in component CSS */
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+}

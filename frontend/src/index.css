@@ -1,0 +1,194 @@
+/* ============================================
+   Chella Vengadam's Kitchen — Design System
+   ============================================ */
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* CSS Variables — the lavender palette */
+:root {
+  /* Lavender Scale */
+  --lavender-50:  #F5F3FF;
+  --lavender-100: #EDE9FE;
+  --lavender-200: #DDD6FE;
+  --lavender-300: #C4B5FD;
+  --lavender-400: #A78BFA;
+  --lavender-500: #8B5CF6;
+  --lavender-600: #7C3AED;
+  --lavender-700: #6D28D9;
+  --lavender-800: #5B21B6;
+  --lavender-900: #4C1D95;
+
+  /* Neutrals */
+  --ink:    #1F1B2E;
+  --slate:  #534AB7;
+  --muted:  #6B7280;
+  --cream:  #FFFBF5;
+  --white:  #FFFFFF;
+  --border: #E5E7EB;
+
+  /* Accents */
+  --gold:   #D4A574;
+  --rose:   #F9A8D4;
+  --green:  #10B981;
+  --red:    #EF4444;
+
+  /* Fonts */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans:  'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm:  0 1px 2px rgba(76, 29, 149, 0.05);
+  --shadow-md:  0 4px 12px rgba(76, 29, 149, 0.08);
+  --shadow-lg:  0 12px 32px rgba(76, 29, 149, 0.12);
+  --shadow-xl:  0 24px 48px rgba(76, 29, 149, 0.16);
+
+  /* Transitions */
+  --t-fast: 150ms ease;
+  --t-base: 250ms ease;
+  --t-slow: 400ms ease;
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: var(--font-sans);
+  color: var(--ink);
+  background: var(--lavender-50);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  color: var(--lavender-900);
+  line-height: 1.2;
+}
+
+h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+h2 { font-size: clamp(2rem, 4vw, 3rem); }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+p { color: var(--ink); }
+
+a {
+  color: var(--lavender-600);
+  text-decoration: none;
+  transition: color var(--t-fast);
+}
+
+a:hover {
+  color: var(--lavender-800);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all var(--t-base);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--lavender-500);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--lavender-700);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+  background: var(--white);
+  color: var(--lavender-700);
+  border: 1px solid var(--lavender-200);
+}
+
+.btn-secondary:hover {
+  background: var(--lavender-50);
+  border-color: var(--lavender-400);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--lavender-700);
+}
+
+.btn-ghost:hover {
+  background: var(--lavender-100);
+}
+
+/* Containers */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Cards */
+.card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--lavender-100);
+  transition: all var(--t-base);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+/* Utility classes */
+.text-center { text-align: center; }
+.text-serif { font-family: var(--font-serif); }
+.text-muted { color: var(--muted); }
+.text-lavender { color: var(--lavender-600); }
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--lavender-50);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--lavender-300);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lavender-500);
+}

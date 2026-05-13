@@ -1,0 +1,330 @@
+/* ============ HERO ============ */
+
+.hero {
+  position: relative;
+  padding: 5rem 0 6rem;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--lavender-50) 0%, var(--white) 100%);
+}
+
+.hero-bg-shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.5;
+}
+
+.shape-1 {
+  width: 400px;
+  height: 400px;
+  background: var(--lavender-200);
+  top: -150px;
+  right: -100px;
+}
+
+.shape-2 {
+  width: 300px;
+  height: 300px;
+  background: var(--rose);
+  bottom: -100px;
+  left: -80px;
+  opacity: 0.25;
+}
+
+.shape-3 {
+  width: 200px;
+  height: 200px;
+  background: var(--lavender-400);
+  top: 50%;
+  left: 60%;
+  opacity: 0.3;
+}
+
+/* Vellore Fort silhouette — subtle at the bottom */
+.vellore-mark {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 50px;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.vellore-mark svg {
+  width: 100%;
+  height: 100%;
+  
+}
+
+.vellore-mark svg path {
+  fill: var(--lavender-900);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 760px;
+}
+
+.hero-tag {
+  color: var(--lavender-600);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  margin-bottom: 1.25rem;
+}
+
+.hero-tamil {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--lavender-500);
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+  color: var(--lavender-900);
+}
+
+.italic {
+  font-style: italic;
+  color: var(--lavender-600);
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 0.875rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ============ FEATURES ============ */
+
+.features {
+  padding: 5rem 0 4rem;
+  background: var(--white);
+}
+
+.features-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.features-header h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  margin-top: 0.5rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.feature-card {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  border-radius: var(--radius-lg);
+  background: var(--lavender-50);
+  border: 1px solid var(--lavender-100);
+  transition: all var(--t-base);
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  background: var(--white);
+  border-color: var(--lavender-300);
+}
+
+.feature-icon {
+  font-size: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.feature-tamil {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--lavender-500);
+  margin-bottom: 0.5rem;
+}
+
+.feature-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+  color: var(--lavender-900);
+}
+
+.feature-card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ============ ABOUT ============ */
+
+.about-section {
+  padding: 5rem 0;
+  background: var(--lavender-50);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.section-tag {
+  color: var(--lavender-600);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  margin-bottom: 0.875rem;
+}
+
+.section-tag.light {
+  color: var(--lavender-300);
+}
+
+.about-text h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  margin-bottom: 1.25rem;
+}
+
+.about-text p {
+  font-size: 0.98rem;
+  color: var(--ink);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.about-visual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.visual-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1rem;
+  text-align: center;
+  border: 1px solid var(--lavender-100);
+  transition: all var(--t-base);
+}
+
+.visual-card:hover {
+  transform: translateY(-4px) rotate(-1deg);
+  box-shadow: var(--shadow-lg);
+}
+
+.visual-card-2:hover { transform: translateY(-4px) rotate(1deg); }
+.visual-card-4:hover { transform: translateY(-4px) rotate(1deg); }
+
+.visual-emoji {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.visual-tamil {
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--lavender-500);
+  margin-bottom: 0.25rem;
+}
+
+.visual-card p:last-child {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  color: var(--lavender-900);
+  font-weight: 500;
+}
+
+/* ============ CTA ============ */
+
+.cta-section {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, var(--lavender-700) 0%, var(--lavender-900) 100%);
+  color: var(--white);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.05) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 2;
+  max-width: 560px;
+}
+
+.cta-heading {
+  color: var(--white);
+  margin-bottom: 0.75rem;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+
+.cta-subtitle {
+  color: var(--lavender-100);
+  font-size: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.cta-section .btn-secondary {
+  background: transparent;
+  color: var(--white);
+  border-color: var(--lavender-300);
+}
+
+.cta-section .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--white);
+}
+
+/* ============ RESPONSIVE ============ */
+
+@media (max-width: 768px) {
+  .hero { padding: 3.5rem 0 4.5rem; }
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .hero-tamil { font-size: 1.25rem; }
+}
