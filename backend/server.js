@@ -5,6 +5,7 @@ const db = require('./config/db');
 const menuRoutes = require('./routes/menuRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const reservationRoutes = require('./routes/reservationRoutes');
+const authRoutes = require('./routes/authRoutes');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -15,6 +16,7 @@ app.use(express.json());    // Parse incoming JSON from frontend
 app.use('/api/menu', menuRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/reservations', reservationRoutes);
+app.use('/api/auth', authRoutes);
 // Health check route
 app.get('/', (req, res) => {
   res.json({

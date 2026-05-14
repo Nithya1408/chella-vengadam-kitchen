@@ -7,6 +7,7 @@ import CheckoutPage from './pages/CheckoutPage';
 import OrderConfirmationPage from './pages/OrderConfirmationPage';
 import ReservationPage from './pages/ReservationPage';
 import ReservationConfirmationPage from './pages/ReservationConfirmationPage';
+import AuthPage from './pages/AuthPage';
 import './App.css';
 
 function App() {
@@ -22,7 +23,8 @@ function App() {
           <Route path="/order-confirmed/:orderId" element={<OrderConfirmationPage />} />
           <Route path="/reserve" element={<ReservationPage />} />
           <Route path="/reservation-confirmed/:reservationId" element={<ReservationConfirmationPage />} />
-          {/* Coming soon: /login, /admin */}
+          <Route path="/login" element={<AuthPage mode="login" />} />
+          <Route path="/signup" element={<AuthPage mode="signup" />} />
         </Routes>
       </main>
     </div>

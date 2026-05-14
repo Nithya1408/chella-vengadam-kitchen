@@ -1,10 +1,40 @@
+import { useState, useRef, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
 import './Navbar.css';
 
 function Navbar() {
   const { totalItems } = useCart();
+  const { user, isLoggedIn, logout } = useAuth();
   const navigate = useNavigate();
+  
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setMenuOpen(false);
+      }
+    }
+    if (menuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [menuOpen]);
+
+  const handleLogout = () => {
+    logout();
+    setMenuOpen(false);
+    navigate('/');
+  };
+
+  // Generate initials for avatar
+  const initials = user?.name
+    ? user.name.split(' ').map(n => n[0]).slice(0, 2).join('').toUpperCase()
+    : '';
 
   return (
     <nav className="navbar">
@@ -60,7 +90,55 @@ function Navbar() {
             )}
           </button>
 
-          <Link to="/login" className="btn btn-ghost sign-in-btn">Sign in</Link>
+          {/* Auth area */}
+          {isLoggedIn ? (
+            <div className="user-menu" ref={menuRef}>
+              <button 
+                className="user-avatar-btn"
+                onClick={() => setMenuOpen(!menuOpen)}
+                aria-label="User menu"
+              >
+                <span className="user-avatar">{initials}</span>
+                <span className="user-greeting">Hi, {user.name.split(' ')[0]}</span>
+                <span className={`chev ${menuOpen ? 'open' : ''}`}>▾</span>
+              </button>
+
+              {menuOpen && (
+                <div className="user-dropdown">
+                  <div className="dropdown-header">
+                    <p className="dropdown-name">{user.name}</p>
+                    <p className="dropdown-email">{user.email}</p>
+                    <span className={`role-tag role-${user.role}`}>
+                      {user.role}
+                    </span>
+                  </div>
+                  <div className="dropdown-divider"></div>
+                  <Link to="/" onClick={() => setMenuOpen(false)} className="dropdown-link">
+                    🏠 Home
+                  </Link>
+                  <Link to="/menu" onClick={() => setMenuOpen(false)} className="dropdown-link">
+                    🍽️ Menu
+                  </Link>
+                  <Link to="/cart" onClick={() => setMenuOpen(false)} className="dropdown-link">
+                    🛒 Cart {totalItems > 0 && `(${totalItems})`}
+                  </Link>
+                  {user.role === 'admin' && (
+                    <Link to="/admin" onClick={() => setMenuOpen(false)} className="dropdown-link admin-link">
+                      ⚙️ Admin Dashboard
+                    </Link>
+                  )}
+                  <div className="dropdown-divider"></div>
+                  <button onClick={handleLogout} className="dropdown-link logout-btn">
+                    🚪 Sign out
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <Link to="/login" className="btn btn-ghost sign-in-btn">
+              Sign in
+            </Link>
+          )}
         </div>
       </div>
     </nav>
