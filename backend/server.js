@@ -4,6 +4,7 @@ require('dotenv').config();
 const db = require('./config/db');
 const menuRoutes = require('./routes/menuRoutes');
 const orderRoutes = require('./routes/orderRoutes');
+const reservationRoutes = require('./routes/reservationRoutes');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -13,6 +14,7 @@ app.use(express.json());    // Parse incoming JSON from frontend
 // Routes
 app.use('/api/menu', menuRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api/reservations', reservationRoutes);
 // Health check route
 app.get('/', (req, res) => {
   res.json({

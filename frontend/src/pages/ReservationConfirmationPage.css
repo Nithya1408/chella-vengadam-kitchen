@@ -1,0 +1,214 @@
+.reservation-confirm-page {
+  padding: 3rem 0 5rem;
+  min-height: calc(100vh - 73px);
+  background: linear-gradient(180deg, var(--lavender-50) 0%, var(--white) 100%);
+}
+
+.confirm-container {
+  max-width: 720px;
+}
+
+/* CELEBRATION */
+.celebration {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding: 2rem 1rem;
+}
+
+.celebration-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: bounce 0.8s ease;
+}
+
+@keyframes bounce {
+  0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+  60% { transform: scale(1.2) rotate(15deg); }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+.celebration-tag {
+  color: var(--lavender-600);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  margin-bottom: 0.75rem;
+}
+
+.celebration h1 {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+.celebration-subtitle {
+  color: var(--muted);
+  font-size: 1rem;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+/* RESERVATION CARD */
+.reservation-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--lavender-100);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.reservation-card-header {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--lavender-50) 0%, var(--lavender-100) 100%);
+  border-bottom: 1px solid var(--lavender-100);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.reservation-label {
+  font-size: 0.7rem;
+  color: var(--lavender-600);
+  letter-spacing: 2px;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.reservation-number {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--lavender-900);
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.status-badge {
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.status-badge.confirmed {
+  background: rgba(22, 163, 74, 0.1);
+  color: #15803D;
+  border: 1px solid rgba(22, 163, 74, 0.3);
+}
+
+/* Grid display */
+.reservation-grid-display {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem 1.5rem;
+  padding: 1.75rem;
+  border-bottom: 1px dashed var(--lavender-100);
+}
+
+.grid-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.grid-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.grid-key {
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 1.5px;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.grid-value {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--lavender-900);
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Notes */
+.reservation-notes {
+  padding: 1rem 1.5rem;
+  background: var(--lavender-50);
+  border-bottom: 1px dashed var(--lavender-100);
+}
+
+.notes-label {
+  font-size: 0.72rem;
+  letter-spacing: 1.5px;
+  color: var(--lavender-600);
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.notes-text {
+  font-size: 0.9rem;
+  color: var(--ink);
+  margin: 0;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* Tips */
+.reservation-tips {
+  padding: 1.25rem 1.5rem;
+}
+
+.tips-title {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  color: var(--lavender-900);
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.reservation-tips ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.reservation-tips li {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* Actions */
+.confirm-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.loading {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: var(--muted);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .reservation-grid-display {
+    grid-template-columns: 1fr;
+  }
+  .reservation-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

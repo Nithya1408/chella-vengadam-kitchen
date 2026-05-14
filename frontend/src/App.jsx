@@ -5,6 +5,8 @@ import MenuPage from './pages/MenuPage';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
 import OrderConfirmationPage from './pages/OrderConfirmationPage';
+import ReservationPage from './pages/ReservationPage';
+import ReservationConfirmationPage from './pages/ReservationConfirmationPage';
 import './App.css';
 
 function App() {
@@ -18,7 +20,9 @@ function App() {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/order-confirmed/:orderId" element={<OrderConfirmationPage />} />
-          {/* Coming soon: /reserve, /login, /admin */}
+          <Route path="/reserve" element={<ReservationPage />} />
+          <Route path="/reservation-confirmed/:reservationId" element={<ReservationConfirmationPage />} />
+          {/* Coming soon: /login, /admin */}
         </Routes>
       </main>
     </div>
