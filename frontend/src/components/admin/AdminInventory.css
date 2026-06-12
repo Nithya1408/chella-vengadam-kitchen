@@ -1,0 +1,331 @@
+/* Re-uses .summary-stat, .filter-pills, .menu-filter-bar, .menu-search from earlier admin CSS */
+
+.inventory-summary {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.low-stock-stat {
+  border-color: rgba(239, 68, 68, 0.3) !important;
+  background: rgba(239, 68, 68, 0.03);
+}
+
+/* Low stock banner */
+.low-stock-banner {
+  background: linear-gradient(135deg, rgba(251, 146, 60, 0.1), rgba(239, 68, 68, 0.05));
+  border: 1px solid rgba(251, 146, 60, 0.3);
+  color: #B45309;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1.5rem;
+  font-size: 0.92rem;
+}
+
+.low-stock-banner strong {
+  font-weight: 700;
+  color: #B91C1C;
+}
+
+/* Grid of cards */
+.inventory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.inventory-card {
+  background: var(--white);
+  border: 1px solid var(--lavender-100);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  transition: all var(--t-base);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.inventory-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--lavender-300);
+}
+
+.inventory-card.low {
+  background: linear-gradient(135deg, rgba(251, 146, 60, 0.04), rgba(239, 68, 68, 0.02));
+  border-color: rgba(251, 146, 60, 0.3);
+}
+
+.inventory-card.low:hover {
+  border-color: rgba(239, 68, 68, 0.5);
+}
+
+/* Header */
+.inv-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.inv-name {
+  font-family: var(--font-serif);
+  font-size: 1.02rem;
+  font-weight: 500;
+  color: var(--lavender-900);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.low-tag {
+  background: rgba(239, 68, 68, 0.12);
+  color: #B91C1C;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-full);
+  letter-spacing: 1px;
+  flex-shrink: 0;
+}
+
+/* Quantity */
+.inv-quantity {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.qty-num {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--lavender-900);
+  line-height: 1;
+}
+
+.inventory-card.low .qty-num {
+  color: #B45309;
+}
+
+.qty-unit {
+  font-size: 0.85rem;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Visual stock bar */
+.inv-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--lavender-100);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.inv-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--lavender-400), var(--lavender-600));
+  border-radius: var(--radius-full);
+  transition: width 0.4s ease;
+}
+
+.inv-bar-fill.bar-low {
+  background: linear-gradient(90deg, #FB923C, #EF4444);
+}
+
+/* Footer */
+.inv-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--lavender-100);
+  margin-top: 0.25rem;
+}
+
+.inv-reorder strong {
+  color: var(--lavender-700);
+  font-weight: 600;
+}
+
+.inv-date {
+  font-style: italic;
+}
+/* ============ UPDATE STOCK BUTTON ============ */
+.update-stock-btn {
+  width: 100%;
+  background: var(--lavender-50);
+  border: 1px solid var(--lavender-200);
+  color: var(--lavender-700);
+  padding: 0.6rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--t-fast);
+  margin-top: 0.25rem;
+}
+
+.update-stock-btn:hover {
+  background: var(--lavender-500);
+  color: var(--white);
+  border-color: var(--lavender-500);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.inventory-card.low .update-stock-btn {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #B91C1C;
+}
+
+.inventory-card.low .update-stock-btn:hover {
+  background: #DC2626;
+  color: var(--white);
+  border-color: #DC2626;
+}
+
+/* ============ EDIT MODE ============ */
+.inventory-card.editing {
+  border-color: var(--lavender-500);
+  box-shadow: 0 0 0 3px var(--lavender-100);
+}
+
+.inv-edit-mode {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.edit-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.edit-field span {
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  color: var(--lavender-700);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.edit-field input {
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--lavender-200);
+  border-radius: var(--radius-md);
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  background: var(--white);
+  color: var(--lavender-900);
+  transition: all var(--t-fast);
+}
+
+.edit-field input:focus {
+  outline: none;
+  border-color: var(--lavender-500);
+  box-shadow: 0 0 0 3px var(--lavender-100);
+}
+
+/* Quick add row */
+.quick-add-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.quick-add-label {
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-right: 0.25rem;
+}
+
+.quick-add-row button {
+  background: var(--white);
+  border: 1px solid var(--lavender-300);
+  color: var(--lavender-700);
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius-md);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--t-fast);
+  font-family: var(--font-sans);
+}
+
+.quick-add-row button:hover {
+  background: var(--lavender-500);
+  color: var(--white);
+  border-color: var(--lavender-500);
+  transform: translateY(-1px);
+}
+
+/* Edit error */
+.edit-error {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: var(--red);
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--radius-md);
+  font-size: 0.82rem;
+  margin: 0;
+}
+
+/* Edit action buttons */
+.edit-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.btn-cancel,
+.btn-save {
+  flex: 1;
+  padding: 0.6rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--t-fast);
+}
+
+.btn-cancel {
+  background: transparent;
+  border: 1px solid var(--lavender-200);
+  color: var(--muted);
+}
+
+.btn-cancel:hover:not(:disabled) {
+  border-color: var(--lavender-400);
+  color: var(--lavender-700);
+}
+
+.btn-save {
+  background: linear-gradient(135deg, var(--lavender-500), var(--lavender-700));
+  color: var(--white);
+  border: none;
+}
+
+.btn-save:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-save:disabled,
+.btn-cancel:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

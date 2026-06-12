@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Base URL for our Express backend
 const API = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: 'http://localhost:5050/api',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -76,6 +76,52 @@ export const login = async (data) => {
 
 export const getCurrentUser = async () => {
   const res = await API.get('/auth/me');
+  return res.data;
+};
+// ==================== ADMIN ====================
+
+export const fetchAdminStats = async () => {
+  const res = await API.get('/admin/stats');
+  return res.data;
+};
+
+export const fetchAdminOrders = async (status = 'all') => {
+  const res = await API.get(`/admin/orders?status=${status}`);
+  return res.data;
+};
+
+export const updateOrderStatus = async (orderId, status) => {
+  const res = await API.patch(`/admin/orders/${orderId}/status`, { status });
+  return res.data;
+};
+
+export const fetchAdminReservations = async (filter = 'upcoming', status = 'all') => {
+  const res = await API.get(`/admin/reservations?filter=${filter}&status=${status}`);
+  return res.data;
+};
+
+export const updateReservationStatus = async (resId, status) => {
+  const res = await API.patch(`/admin/reservations/${resId}/status`, { status });
+  return res.data;
+};
+
+export const fetchAdminMenu = async () => {
+  const res = await API.get('/admin/menu');
+  return res.data;
+};
+
+export const toggleMenuAvailability = async (itemId, isAvailable) => {
+  const res = await API.patch(`/admin/menu/${itemId}/availability`, { is_available: isAvailable });
+  return res.data;
+};
+
+export const fetchAdminInventory = async () => {
+  const res = await API.get('/admin/inventory');
+  return res.data;
+};
+
+export const updateInventory = async (id, data) => {
+  const res = await API.patch(`/admin/inventory/${id}`, data);
   return res.data;
 };
 export default API;

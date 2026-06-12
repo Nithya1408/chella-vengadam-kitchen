@@ -6,6 +6,8 @@ const menuRoutes = require('./routes/menuRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const reservationRoutes = require('./routes/reservationRoutes');
 const authRoutes = require('./routes/authRoutes');
+const adminRoutes = require('./routes/adminRoutes');
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -17,6 +19,7 @@ app.use('/api/menu', menuRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/reservations', reservationRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/admin', adminRoutes);
 // Health check route
 app.get('/', (req, res) => {
   res.json({

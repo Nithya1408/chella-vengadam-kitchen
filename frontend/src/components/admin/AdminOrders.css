@@ -1,0 +1,200 @@
+/* ============ FILTER PILLS ============ */
+.filter-pills {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-pill {
+  background: var(--white);
+  border: 1px solid var(--lavender-200);
+  color: var(--lavender-700);
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--t-fast);
+  font-family: var(--font-sans);
+}
+
+.filter-pill:hover {
+  background: var(--lavender-50);
+  border-color: var(--lavender-400);
+}
+
+.filter-pill.active {
+  background: var(--lavender-600);
+  color: var(--white);
+  border-color: var(--lavender-600);
+  box-shadow: var(--shadow-md);
+}
+
+/* ============ ORDERS TABLE ============ */
+.orders-table-wrap {
+  background: var(--white);
+  border: 1px solid var(--lavender-100);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  overflow-x: auto;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  min-width: 900px;
+}
+
+.orders-table thead {
+  background: var(--lavender-50);
+  border-bottom: 1px solid var(--lavender-100);
+}
+
+.orders-table th {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 1.5px;
+  color: var(--lavender-700);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.orders-table tbody tr {
+  border-bottom: 1px solid var(--lavender-50);
+  transition: background var(--t-fast);
+}
+
+.orders-table tbody tr:hover {
+  background: var(--lavender-50);
+}
+
+.orders-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.orders-table td {
+  padding: 0.9rem 1rem;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+/* Cell styles */
+.order-number-cell {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  color: var(--lavender-900);
+  font-size: 0.92rem;
+}
+
+.amount-cell {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  color: var(--lavender-700);
+}
+
+.type-badge {
+  font-size: 0.82rem;
+  color: var(--ink);
+}
+
+.muted-cell {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.payment-method {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.92rem;
+}
+
+.payment-tag {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.payment-tag.paid {
+  background: rgba(16, 185, 129, 0.12);
+  color: #15803D;
+}
+
+.payment-tag.unpaid {
+  background: rgba(251, 146, 60, 0.12);
+  color: #B45309;
+}
+
+/* ============ STATUS CELL ============ */
+.status-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-dot.gray   { background: #9CA3AF; }
+.status-dot.orange { background: #FB923C; }
+.status-dot.blue   { background: #3B82F6; }
+.status-dot.purple { background: #8B5CF6; }
+.status-dot.green  { background: #10B981; }
+.status-dot.red    { background: #EF4444; }
+
+.status-select {
+  border: 1px solid var(--lavender-200);
+  border-radius: var(--radius-md);
+  padding: 0.35rem 0.65rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  background: var(--white);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all var(--t-fast);
+}
+
+.status-select:hover {
+  border-color: var(--lavender-400);
+}
+
+.status-select:focus {
+  outline: none;
+  border-color: var(--lavender-500);
+  box-shadow: 0 0 0 3px var(--lavender-100);
+}
+
+.status-select.status-gray   { color: #4B5563; }
+.status-select.status-orange { color: #B45309; }
+.status-select.status-blue   { color: #1D4ED8; }
+.status-select.status-purple { color: #6D28D9; }
+.status-select.status-green  { color: #15803D; }
+.status-select.status-red    { color: #B91C1C; }
+
+.status-select:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .filter-pills {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 0.25rem;
+  }
+  .filter-pill {
+    flex-shrink: 0;
+  }
+}

@@ -1,0 +1,232 @@
+.admin-page {
+  min-height: calc(100vh - 73px);
+  background: var(--lavender-50);
+}
+
+.admin-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: calc(100vh - 73px);
+}
+
+/* ============ SIDEBAR ============ */
+.admin-sidebar {
+  background: var(--white);
+  border-right: 1px solid var(--lavender-100);
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 73px;
+  height: calc(100vh - 73px);
+}
+
+/* Brand */
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.5rem 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--lavender-100);
+  margin-bottom: 1rem;
+}
+
+.brand-mark {
+  font-size: 1.8rem;
+  filter: drop-shadow(0 2px 4px rgba(139, 92, 246, 0.3));
+}
+
+.brand-tamil {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--lavender-500);
+  font-size: 0.78rem;
+  margin: 0 0 0.1rem;
+}
+
+.brand-name {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--lavender-900);
+  margin: 0;
+}
+
+/* Nav links */
+.admin-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.admin-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.7rem 0.85rem;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--t-fast);
+  text-align: left;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  width: 100%;
+}
+
+.admin-nav-link:hover {
+  background: var(--lavender-50);
+  color: var(--lavender-700);
+}
+
+.admin-nav-link.active {
+  background: linear-gradient(135deg, var(--lavender-500) 0%, var(--lavender-700) 100%);
+  color: var(--white);
+  box-shadow: var(--shadow-md);
+}
+
+.admin-nav-link.active .nav-tamil {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.nav-icon {
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.nav-label-wrap {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  gap: 0.15rem;
+}
+
+.nav-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.nav-tamil {
+  font-size: 0.7rem;
+  color: var(--lavender-500);
+  font-style: italic;
+  font-family: var(--font-serif);
+}
+
+/* User card at bottom of sidebar */
+.admin-user-card {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.85rem;
+  border-radius: var(--radius-md);
+  background: var(--lavender-50);
+  margin-top: auto;
+  border: 1px solid var(--lavender-100);
+}
+
+.user-avatar-large {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--lavender-500), var(--lavender-700));
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.82rem;
+  flex-shrink: 0;
+}
+
+.user-name {
+  font-size: 0.88rem;
+  color: var(--lavender-900);
+  font-weight: 500;
+  margin: 0 0 0.1rem;
+  line-height: 1.2;
+}
+
+.user-role {
+  font-size: 0.7rem;
+  color: var(--lavender-500);
+  margin: 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ============ MAIN CONTENT ============ */
+.admin-content {
+  padding: 2rem 2.5rem;
+  overflow-y: auto;
+}
+
+/* Common admin tab styles (used by Overview, Orders, etc.) */
+.tab-header {
+  margin-bottom: 1.75rem;
+}
+
+.tab-tag {
+  font-size: 0.75rem;
+  color: var(--lavender-600);
+  font-weight: 600;
+  letter-spacing: 3px;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-sans);
+}
+
+.tab-title {
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  color: var(--lavender-900);
+  font-weight: 500;
+  margin: 0 0 0.3rem;
+}
+
+.tab-subtitle {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Loading and empty states */
+.admin-loading,
+.admin-empty {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.admin-empty-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.6;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px) {
+  .admin-layout {
+    grid-template-columns: 1fr;
+  }
+  .admin-sidebar {
+    position: static;
+    height: auto;
+  }
+  .admin-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 0.25rem;
+  }
+  .admin-nav-link {
+    flex-shrink: 0;
+  }
+  .admin-user-card {
+    display: none;
+  }
+  .admin-content {
+    padding: 1.5rem;
+  }
+}

@@ -1,0 +1,95 @@
+/* Re-use filter pills styles from AdminOrders.css (already loaded) */
+
+.reservations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1rem;
+}
+
+.reservation-card {
+  background: var(--white);
+  border: 1px solid var(--lavender-100);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  transition: all var(--t-base);
+}
+
+.reservation-card:hover {
+  border-color: var(--lavender-300);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Header */
+.rc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px dashed var(--lavender-100);
+}
+
+.rc-number {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--lavender-900);
+  letter-spacing: 0.5px;
+  margin: 0 0 0.2rem;
+}
+
+.rc-guest {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.rc-status-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Meta grid */
+.rc-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem 1rem;
+}
+
+.meta-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--ink);
+}
+
+.meta-ico {
+  font-size: 1rem;
+  opacity: 0.8;
+  flex-shrink: 0;
+}
+
+/* Footer */
+.rc-footer {
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px dashed var(--lavender-100);
+}
+
+.rc-phone {
+  font-size: 0.85rem;
+  color: var(--lavender-700);
+  margin: 0 0 0.4rem;
+}
+
+.rc-notes {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-style: italic;
+  margin: 0;
+  line-height: 1.4;
+}

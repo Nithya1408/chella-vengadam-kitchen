@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import ProtectedRoute from './components/ProtectedRoute';
 import HomePage from './pages/HomePage';
 import MenuPage from './pages/MenuPage';
 import CartPage from './pages/CartPage';
@@ -8,6 +9,7 @@ import OrderConfirmationPage from './pages/OrderConfirmationPage';
 import ReservationPage from './pages/ReservationPage';
 import ReservationConfirmationPage from './pages/ReservationConfirmationPage';
 import AuthPage from './pages/AuthPage';
+import AdminPage from './pages/AdminPage';
 import './App.css';
 
 function App() {
@@ -25,6 +27,14 @@ function App() {
           <Route path="/reservation-confirmed/:reservationId" element={<ReservationConfirmationPage />} />
           <Route path="/login" element={<AuthPage mode="login" />} />
           <Route path="/signup" element={<AuthPage mode="signup" />} />
+          <Route 
+            path="/admin" 
+            element={
+              <ProtectedRoute requireAdmin={true}>
+                <AdminPage />
+              </ProtectedRoute>
+            } 
+          />
         </Routes>
       </main>
     </div>
