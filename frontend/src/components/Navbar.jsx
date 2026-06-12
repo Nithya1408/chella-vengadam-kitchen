@@ -122,11 +122,16 @@ function Navbar() {
                   <Link to="/cart" onClick={() => setMenuOpen(false)} className="dropdown-link">
                     🛒 Cart {totalItems > 0 && `(${totalItems})`}
                   </Link>
-                  {user.role === 'admin' && (
-                    <Link to="/admin" onClick={() => setMenuOpen(false)} className="dropdown-link admin-link">
-                      ⚙️ Admin Dashboard
-                    </Link>
+                  {(user.role === 'admin' || user.role === 'staff') && (
+                  <Link to="/kitchen" onClick={() => setMenuOpen(false)} className="dropdown-link admin-link">
+                    🍳 Kitchen View
+                  </Link>
                   )}
+{user.role === 'admin' && (
+  <Link to="/admin" onClick={() => setMenuOpen(false)} className="dropdown-link admin-link">
+    ⚙️ Admin Dashboard
+  </Link>
+)}
                   <div className="dropdown-divider"></div>
                   <button onClick={handleLogout} className="dropdown-link logout-btn">
                     🚪 Sign out

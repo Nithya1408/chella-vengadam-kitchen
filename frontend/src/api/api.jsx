@@ -58,6 +58,17 @@ export const fetchReservationById = async (id) => {
   const res = await API.get(`/reservations/${id}`);
   return res.data;
 };
+// ==================== KITCHEN ====================
+
+export const fetchKitchenOrders = async () => {
+  const res = await API.get('/orders/kitchen');
+  return res.data;
+};
+
+export const updateKitchenOrderStatus = async (orderId, status) => {
+  const res = await API.patch(`/orders/${orderId}/status`, { status });
+  return res.data;
+};
 export const fetchOrderById = async (orderId) => {
   const res = await API.get(`/orders/${orderId}`);
   return res.data;

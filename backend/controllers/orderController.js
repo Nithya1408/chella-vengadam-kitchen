@@ -177,3 +177,84 @@ exports.getAllOrders = async (req, res) => {
     });
   }
 };
+// ============ GET /api/orders/kitchen ============
+// Active orders for the kitchen view (staff + admin)
+exports.getKitchenOrders = async (req, res) => {
+  try {
+    const [rows] = await db.query(`
+      SELECT 
+        o.order_id, o.order_type, o.status, o.table_id, o.created_at,
+        t.table_number
+      FROM orders o
+      LEFT JOIN restaurant_tables t ON t.table_id = o.table_id
+      WHERE o.status IN ('pending', 'preparing', 'ready')
+      ORDER BY o.created_at ASC
+    `);
+
+    // Fetch items for each order
+    const orderIds = rows.map(o => o.order_id);
+    let itemsByOrder = {};
+
+    if (orderIds.length > 0) {
+      const [items] = await db.query(`
+        SELECT 
+          oi.order_id, oi.quantity, oi.special_request,
+          m.name, m.is_veg, m.prep_time_minutes
+        FROM order_items oi
+        LEFT JOIN menu_items m ON m.item_id = oi.item_id
+        WHERE oi.order_id IN (?)
+        ORDER BY oi.order_item_id
+      `, [orderIds]);
+
+      itemsByOrder = items.reduce((acc, item) => {
+        if (!acc[item.order_id]) acc[item.order_id] = [];
+        acc[item.order_id].push(item);
+        return acc;
+      }, {});
+    }
+
+    res.json({
+      success: true,
+      count: rows.length,
+      data: rows.map(o => ({
+        ...o,
+        order_number: `CV${String(o.order_id).padStart(5, '0')}`,
+        items: itemsByOrder[o.order_id] || [],
+      })),
+    });
+  } catch (err) {
+    console.error('Kitchen orders error:', err);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch kitchen orders',
+      error: err.message,
+    });
+  }
+};
+
+// ============ PATCH /api/orders/:id/status ============
+// Allow staff/admin to update order status from kitchen
+exports.updateStatusFromKitchen = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    const validStatuses = ['pending', 'preparing', 'ready', 'served', 'completed', 'cancelled'];
+    if (!validStatuses.includes(status)) {
+      return res.status(400).json({ success: false, message: 'Invalid status' });
+    }
+
+    const [result] = await db.query(
+      `UPDATE orders SET status = ? WHERE order_id = ?`,
+      [status, id]
+    );
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ success: false, message: 'Order not found' });
+    }
+
+    res.json({ success: true, message: 'Order status updated' });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Failed to update', error: err.message });
+  }
+};

@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import ProtectedRoute from './components/ProtectedRoute';
 import HomePage from './pages/HomePage';
 import MenuPage from './pages/MenuPage';
@@ -10,6 +11,8 @@ import ReservationPage from './pages/ReservationPage';
 import ReservationConfirmationPage from './pages/ReservationConfirmationPage';
 import AuthPage from './pages/AuthPage';
 import AdminPage from './pages/AdminPage';
+import KitchenPage from './pages/KitchenPage';
+import AboutPage from './pages/AboutPage';
 import './App.css';
 
 function App() {
@@ -27,16 +30,26 @@ function App() {
           <Route path="/reservation-confirmed/:reservationId" element={<ReservationConfirmationPage />} />
           <Route path="/login" element={<AuthPage mode="login" />} />
           <Route path="/signup" element={<AuthPage mode="signup" />} />
-          <Route 
-            path="/admin" 
+          <Route path="/about" element={<AboutPage />} />
+          <Route
+            path="/admin"
             element={
               <ProtectedRoute requireAdmin={true}>
                 <AdminPage />
               </ProtectedRoute>
-            } 
+            }
+          />
+          <Route
+            path="/kitchen"
+            element={
+              <ProtectedRoute>
+                <KitchenPage />
+              </ProtectedRoute>
+            }
           />
         </Routes>
       </main>
+      <Footer />
     </div>
   );
 }
