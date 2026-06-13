@@ -11,21 +11,42 @@ const adminRoutes = require('./routes/adminRoutes');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
-app.use(cors());           // Allow frontend (port 5173) to talk to backend
-app.use(express.json());    // Parse incoming JSON from frontend
-// Routes
+// ============ CORS ============
+// Allows local dev (localhost:5173) AND deployed frontend (FRONTEND_URL env var on Render)
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:5050',
+  process.env.FRONTEND_URL, // Will be set in Render's env vars after Netlify deploy
+].filter(Boolean); // Removes undefined entries
+
+app.use(cors({
+  origin: (origin, callback) => {
+    // Allow requests with no origin (mobile apps, Postman, curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error('Not allowed by CORS'));
+  },
+  credentials: true,
+}));
+
+// ============ Middleware ============
+app.use(express.json());
+
+// ============ Routes ============
 app.use('/api/menu', menuRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/reservations', reservationRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
+
 // Health check route
 app.get('/', (req, res) => {
   res.json({
-    message: ' Welcome to Chella Vengadam\'s Kitchen API',
+    message: 'Welcome to Chella Vengadam\'s Kitchen API',
     status: 'running',
-    version: '1.0.0'
+    version: '1.0.0',
   });
 });
 
@@ -36,13 +57,13 @@ app.get('/api/test-db', async (req, res) => {
     res.json({
       success: true,
       message: 'Database connected',
-      server_time: rows[0].server_time
+      server_time: rows[0].server_time,
     });
   } catch (err) {
     res.status(500).json({
       success: false,
       message: 'Database error',
-      error: err.message
+      error: err.message,
     });
   }
 });
