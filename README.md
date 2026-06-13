@@ -34,12 +34,12 @@ The design intentionally avoids generic SaaS aesthetics. Tamil typography, a lav
 ### Admin Overview
 *KPIs, sales chart, top sellers.*
 
-![Admin overview](./screenshots/Admin%20Dashboard.png)
+![Admin overview](./screenshots/AdminDashboard.png)
 
 ### Kitchen View
 *Live order queue with urgency indicators.*
 
-![Kitchen view](./screenshots/Kitchen%20View.png)
+![Kitchen view](./screenshots/KitchenView.png)
 
 ### About
 *Storytelling driven design.*
