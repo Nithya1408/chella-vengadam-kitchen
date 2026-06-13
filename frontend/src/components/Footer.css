@@ -82,16 +82,17 @@
 }
 
 .social-link {
-  width: 38px;
-  height: 38px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 50%;
+  border-radius: var(--radius-full);
+  padding: 0.4rem 0.95rem;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 0.78rem;
+  color: var(--lavender-100);
+  font-weight: 500;
+  letter-spacing: 0.5px;
   transition: all var(--t-fast);
 }
 
@@ -149,10 +150,14 @@
   margin-bottom: 0;
 }
 
-.footer-ico {
-  display: inline-block;
-  margin-right: 0.4rem;
-  opacity: 0.85;
+.footer-label {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--lavender-400);
+  font-weight: 600;
+  margin-bottom: 0.3rem;
 }
 
 .muted-line {

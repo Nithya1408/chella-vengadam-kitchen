@@ -150,10 +150,18 @@
   border-color: var(--lavender-300);
 }
 
-.value-icon {
-  font-size: 2.2rem;
+.value-mark {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--lavender-400);
+  font-weight: 500;
+  font-style: italic;
   display: inline-block;
   margin-bottom: 0.85rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--lavender-200);
+  min-width: 36px;
+  letter-spacing: 1px;
 }
 
 .value-card h3 {
@@ -276,23 +284,11 @@
 }
 
 .visit-detail-row {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
+  padding-left: 1rem;
+  border-left: 2px solid var(--lavender-200);
 }
 
-.vd-icon {
-  font-size: 1.25rem;
-  background: var(--white);
-  width: 42px;
-  height: 42px;
-  border-radius: var(--radius-md);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  border: 1px solid var(--lavender-100);
-}
+
 
 .vd-label {
   font-size: 0.72rem;
@@ -347,10 +343,14 @@
 .vc-2:hover,
 .vc-4:hover { transform: translateY(-3px) rotate(1deg); }
 
-.vc-emoji {
-  font-size: 2.5rem;
-  display: block;
-  margin-bottom: 0.5rem;
+.vc-num {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: var(--lavender-700);
+  margin: 0 0 0.3rem;
+  line-height: 1;
+  letter-spacing: -0.5px;
 }
 
 .visit-card p {
@@ -386,29 +386,26 @@
   z-index: 2;
   max-width: 680px;
 }
-
-.quote-mark {
-  font-family: var(--font-serif);
-  font-size: 5rem;
-  color: var(--lavender-300);
-  line-height: 0.8;
-  display: inline-block;
-  margin-bottom: 0.5rem;
-}
-
 .quote-text {
   font-family: var(--font-serif);
-  font-size: clamp(1.25rem, 2.5vw, 1.65rem);
-  line-height: 1.5;
+  font-size: clamp(1.4rem, 2.8vw, 1.85rem);
+  line-height: 1.55;
   color: var(--white);
-  margin: 0 0 1rem;
+  margin: 0 0 1.25rem;
+  font-weight: 400;
+}
+
+.quote-text .italic {
+  color: var(--white);
+  font-style: italic;
 }
 
 .quote-attribution {
-  font-size: 0.85rem;
-  color: var(--lavender-200);
-  letter-spacing: 1px;
+  font-size: 0.95rem;
+  color: var(--lavender-100);
+  letter-spacing: 1.5px;
   margin: 0;
+  font-style: italic;
 }
 
 /* ============ RESPONSIVE ============ */
@@ -428,4 +425,16 @@
   .timeline-year {
     font-size: 1.25rem;
   }
+}
+
+/* Force quote visibility */
+.about-quote .quote-text {
+  color: white !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+.about-quote .quote-text * {
+  color: white !important;
+}
+.about-quote .quote-attribution {
+  color: #E0E7FF !important;
 }

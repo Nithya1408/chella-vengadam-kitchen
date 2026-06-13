@@ -23,11 +23,10 @@ function Footer() {
               served with the warmth of home, from our family to yours.
             </p>
             <div className="footer-socials">
-              <a href="#" className="social-link" aria-label="Instagram">📷</a>
-              <a href="#" className="social-link" aria-label="Facebook">👍</a>
-              <a href="#" className="social-link" aria-label="WhatsApp">💬</a>
-              <a href="#" className="social-link" aria-label="YouTube">▶️</a>
-            </div>
+            <a href="#" className="social-link" aria-label="Instagram">Instagram</a>
+            <a href="#" className="social-link" aria-label="Facebook">Facebook</a>
+            <a href="#" className="social-link" aria-label="WhatsApp">WhatsApp</a>
+          </div>
           </div>
 
           {/* Quick links */}
@@ -52,19 +51,19 @@ function Footer() {
           <div className="footer-col footer-contact">
             <h4 className="footer-col-title">Find Us</h4>
             <p>
-              <span className="footer-ico">📍</span>
+              <span className="footer-label">Address</span>
               14, Bagayam Road<br />
               Sathuvachari, Vellore<br />
               Tamil Nadu 632009
             </p>
             <p>
-              <span className="footer-ico">🕐</span>
+              <span className="footer-label">Hours</span>
               Lunch · 12 – 3 PM<br />
               Dinner · 7 – 10:30 PM<br />
               <span className="muted-line">Closed Tuesdays</span>
             </p>
             <p>
-              <span className="footer-ico">📞</span>
+              <span className="footer-label">Phone</span>
               +91 416 222 1962
             </p>
           </div>
@@ -73,7 +72,7 @@ function Footer() {
         {/* Bottom strip */}
         <div className="footer-bottom">
           <p className="footer-copyright">
-            © {year} Chella Vengadam's Kitchen. Made with 🌸 in Vellore.
+            © {year} Chella Vengadam's Kitchen,Vellore, Tamil Nadu.
           </p>
           <p className="footer-credits">
             Designed and built by <strong>Nithya</strong> · React, Express, MySQL
