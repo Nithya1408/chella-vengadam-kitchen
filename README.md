@@ -1,4 +1,3 @@
-# Chella Vengadam's Kitchen 
 <div align="center">
 
 # Chella Vengadam's Kitchen
@@ -35,12 +34,12 @@ The design intentionally avoids generic SaaS aesthetics. Tamil typography, a lav
 ### Admin Overview
 *KPIs, sales chart, top sellers.*
 
-![Admin overview](./screenshots/AdminDashboard.png)
+![Admin overview](./screenshots/Admin%20Dashboard.png)
 
 ### Kitchen View
 *Live order queue with urgency indicators.*
 
-![Kitchen view](./screenshots/KitchenView.png)
+![Kitchen view](./screenshots/Kitchen%20View.png)
 
 ### About
 *Storytelling driven design.*
@@ -157,12 +156,10 @@ JWT_SECRET=your_super_secret_jwt_key
 # Terminal 1, backend
 cd backend
 npm run dev
-# Server runs on http://localhost:5000
 
 # Terminal 2, frontend
 cd frontend
 npm run dev
-# Vite runs on http://localhost:5173
 ```
 
 Open http://localhost:5173 in your browser.
@@ -170,10 +167,80 @@ Open http://localhost:5173 in your browser.
 ### Create an admin account
 
 1. Sign up through the UI at /signup
-2. In MySQL, promote yourself to admin:
-```sql
-   UPDATE users SET role = 'admin' WHERE email = 'your@email.com';
-```
+2. In MySQL, promote yourself to admin: `UPDATE users SET role = 'admin' WHERE email = 'your@email.com';`
 3. Sign out and sign back in to refresh your JWT with the new role
 
 ## Project Structure
+
+```
+chella-vengadam-kitchen/
+├── backend/
+│   ├── config/db.js
+│   ├── controllers/
+│   │   ├── authController.js
+│   │   ├── menuController.js
+│   │   ├── orderController.js
+│   │   ├── reservationController.js
+│   │   └── adminController.js
+│   ├── middleware/auth.js
+│   ├── routes/
+│   ├── server.js
+│   └── .env
+│
+├── frontend/
+│   ├── src/
+│   │   ├── api/api.js
+│   │   ├── components/
+│   │   │   ├── admin/
+│   │   │   ├── Navbar.jsx
+│   │   │   ├── Footer.jsx
+│   │   │   ├── MenuCard.jsx
+│   │   │   └── ProtectedRoute.jsx
+│   │   ├── context/
+│   │   ├── pages/
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── index.css
+│   └── vite.config.js
+│
+└── screenshots/
+```
+
+## Engineering Highlights
+
+A few decisions worth calling out for technical reviewers.
+
+**Atomic order placement.** When a customer places an order, the backend opens a transaction, inserts the order row, inserts every order_item, calculates the total, and commits or rolls back on any error. No partial orders ever land in the database.
+
+**Pre-issued JWT role handling.** Since JWTs are stateless snapshots, role changes such as promoting a user to admin require re-issuing the token. The app handles this gracefully: the user is signed out and prompted to sign in again to refresh.
+
+**Custom SVG chart instead of a library.** The 7-day revenue chart was originally built with Recharts but caused a runtime error on certain Safari versions. Rather than ship a broken page, the chart was reimplemented from scratch in pure SVG with gradient fills, hover tooltips, and dynamic Y-axis scaling, all without any third-party charting library.
+
+**Reservation conflict detection.** The initial implementation used TIMESTAMPDIFF directly on TIME columns, which silently failed because MySQL interpreted them as today's date. Fixed by concatenating date and time into a proper DATETIME for comparison.
+
+**Optimistic UI updates.** Inventory edits and menu availability toggles update the React state immediately before the API call returns, with rollback on error. This keeps the UI feeling instant.
+
+## Roadmap
+
+- Live deployment to Render (backend) and Netlify (frontend)
+- Email confirmation for reservations
+- Payment gateway integration (Razorpay)
+- Staff scheduling module
+- Customer order history page
+- Mobile app version
+
+## Author
+
+**Nithya** · [GitHub](https://github.com/Nithya1408)
+
+Built between June 4 and June 14, 2026 as a portfolio project. The design draws on a real Tamil family kitchen.
+
+---
+
+<div align="center">
+
+*The best food is the food that someone remembers their grandmother making.*
+
+Grandmother Thiripuram
+
+</div>
